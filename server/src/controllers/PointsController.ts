@@ -77,11 +77,10 @@ class PointsController {
             const insertedItemsIds = await trx('point_items').insert(pointItems);
             // .catch(function(error) { console.log(error.message); });
 
-            await trx.rollback();
+            await trx.commit();
 
             return response.json({ 
                 id: point_id,
-                items_id: insertedItemsIds,
                 ...point
             });
         } catch (err) {
