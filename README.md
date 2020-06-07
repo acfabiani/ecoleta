@@ -11,7 +11,6 @@
 <p align="center">
   <a href="https://rocketseat.com.br">
     <img src=".github/logo.svg" alt="Logo"><br>
-    <img src="https://s3-sa-east-1.amazonaws.com/rocketseat-cdn/rocketseat_logo_roxa.png" alt="Logo" valign="middle" style="max-width: 130px">
   </a>
 
   <h3 align="center">Next Level Week #01</h3>
@@ -33,9 +32,9 @@ Projeto voltado para fins ecológicos, o Ecoleta serve como uma conexão entre e
 
 ## Project Tree
 ```bash
-├── :cloud: **server** *api*
-├── :globe_with_meridians: **web** *web site*
-└── :iphone: **mobile** *mobile app*
+├── server 
+├── web
+└── mobile
 ```
 
 ## Technologies
