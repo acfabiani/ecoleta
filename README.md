@@ -22,9 +22,7 @@ A project focused on ecological purposes, Ecoleta connects companies and entitie
 Projeto voltado para fins ecológicos, o Ecoleta serve como uma conexão entre empresas e entidades que coletam resíduos orgânicos e inorgânicos às pessoas que precisam descartar esses resíduos.
 
 <p align="center">
-  <a href="https://rocketseat.com.br">
-    <img src=".github/EcoletaProject.png" alt="Logo"><br>
-  </a>
+  <img src=".github/EcoletaProject.PNG" alt="Logo"><br>
 </p>
 
 > Project Layout [Figma](https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/?viewer=1&node-id=)
