@@ -1,4 +1,6 @@
 import express from 'express';
+import multer from "multer";
+import multerConfig from "./config/multer";
 
 import PointsController from './controllers/PointsController';
 import ItemsController from './controllers/ItemsController';
@@ -16,13 +18,16 @@ import ItemsController from './controllers/ItemsController';
 // Repository Pattern (Data Mapper)
 
 const routes = express.Router();
+const upload = multer(multerConfig);
+
 const pointsController = new PointsController();
 const itemsController = new ItemsController();
 
 routes.get('/items', itemsController.index);
-
-routes.post('/points', pointsController.create);
 routes.get('/points', pointsController.index);
 routes.get('/points/:id', pointsController.show);
+
+// Se fosse enviar mais de uma imagem seria upload.array('')
+routes.post('/points', upload.single('image'), pointsController.create);
 
 export default routes;
