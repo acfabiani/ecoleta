@@ -49,55 +49,51 @@ class PointsController {
     }
 
     async create(request: Request, response: Response) {
-        try {
-            const {
-                name, 
-                email, 
-                whatsapp,
-                latitude,
-                longitude,
-                city,
-                uf,
-                items
-            } = request.body;
+        const {
+            name, 
+            email, 
+            whatsapp,
+            latitude,
+            longitude,
+            city,
+            uf,
+            items
+        } = request.body;
 
-            const trx = await knex.transaction();
+        const trx = await knex.transaction();
 
-            const point = {
-                image: request.file.filename,
-                name, 
-                email, 
-                whatsapp,
-                latitude,
-                longitude,
-                city,
-                uf
-            };
+        const point = {
+            image: request.file.filename,
+            name, 
+            email, 
+            whatsapp,
+            latitude,
+            longitude,
+            city,
+            uf
+        };
 
-            const insertedIds = await trx('points').insert(point);
+        const insertedIds = await trx('points').insert(point);
 
-            const point_id = insertedIds[0];
+        const point_id = insertedIds[0];
 
-            const pointItems = items.split(',').map((item: string) => Number(item.trim())).map((item_id: number) => {
-                return {
-                    item_id,
-                    point_id
-                }
-            });
+        const pointItems = items.split(',').map((item: string) => Number(item.trim())).map((item_id: number) => {
+            return {
+                item_id,
+                point_id
+            }
+        });
 
-        
-            const insertedItemsIds = await trx('point_items').insert(pointItems);
-            // .catch(function(error) { console.log(error.message); });
+    
+        const insertedItemsIds = await trx('point_items').insert(pointItems);
+        // .catch(function(error) { console.log(error.message); });
 
-            await trx.commit();
+        await trx.commit();
 
-            return response.json({ 
-                id: point_id,
-                ...point
-            });
-        } catch (err) {
-            return response.json({ message: err.message });
-        } 
+        return response.json({ 
+            id: point_id,
+            ...point
+        });
     }
 }
 
